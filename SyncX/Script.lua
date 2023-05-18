@@ -81,22 +81,7 @@ DrawType:Add("draw008")
 DrawType:Add("draw009")
 DrawType:Add("draw010")
 DrawType:Add("draw011")
-DrawType:Add("draw012")
-DrawType:Add("draw013")
-DrawType:Add("draw014")
-DrawType:Add("draw015")
-DrawType:Add("draw016")
-DrawType:Add("draw017")
-DrawType:Add("draw018")
-DrawType:Add("draw019")
-DrawType:Add("draw020")
-DrawType:Add("draw021")
-DrawType:Add("draw022")
-DrawType:Add("draw023")
-DrawType:Add("draw024")
-DrawType:Add("draw025")
-DrawType:Add("draw026")
-DrawType:Add("draw027")
+DrawType:Add("draw012") -- MAX
 
 T2:AddSwitch("Auto Draw", function(bool)
     _G.Egg = bool
@@ -114,15 +99,21 @@ T2:AddSwitch("Auto Equip Best", function(bool)
     end
 end)
 
-T1:AddSwitch("Auto Win", function(bool)
+T1:AddSwitch("Auto Spam head", function(bool)
     _G.Win = bool
     while wait() do
       if _G.Win == false then break end
       game:GetService("ReplicatedStorage").Events.Match.OneKick:FireServer()
-      game:GetService("ReplicatedStorage").Events.Player.KillMatch:FireServer()
     end
 end)
 
+T1:AddSwitch("Auto Win (enable spam head first)", function(bool)
+    _G.HeadSpam = bool
+        while wait() do
+            if _G.HeadSpam == false then break end
+            game:GetService("ReplicatedStorage").Events.Player.KillMatch:FireServer()
+      end
+end)
 T1:AddSwitch("Auto Rebirth", function(bool)
     _G.Rebirth = bool
     while wait() do
@@ -131,7 +122,7 @@ T1:AddSwitch("Auto Rebirth", function(bool)
     end
 end)
 
-T1:AddSwitch("Auto Rune", function(bool)
+T1:AddSwitch("Auto Collect Rune", function(bool)
     _G.Runes = bool
     while wait() do
       if _G.Runes == false then break end
@@ -139,7 +130,14 @@ T1:AddSwitch("Auto Rune", function(bool)
           table.insert(Rune, RuneID.Name)
       end
       
-      game:GetService("ReplicatedStorage").Events.Match.RuneBorn:FireServer()
       game:GetService("ReplicatedStorage").Events.Player.AddStrong:FireServer(Rune[math.random(1, #Rune)])
+    end
+end)
+
+T1:AddSwitch("Auto Spawn Rune", function(bool)
+        _G.SpawnRunes = bool
+        while wait() do
+            if _G.SpawnRunes == false then break end
+            game:GetService("ReplicatedStorage").Events.Match.RuneBorn:FireServer()
     end
 end)
