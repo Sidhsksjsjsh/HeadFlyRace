@@ -36,33 +36,23 @@ end
 
 local T1 = Window:AddTab("Farm")
 local T2 = Window:AddTab("Egg")
-local T3 = Window:AddTab("Buy")
+local T3 = Window:AddTab("Invade Mode")
 
-T3:AddLabel("WARNING! \n please turn off auto buy all hammer if you want to use auto equip hammer otherwise this will be a problem.")
+T3:AddLabel("only useful for invade mode.")
 
-T3:AddSwitch("Auto Buy All Hammer", function(bool)
-   _G.Hammer = bool
+T3:AddSwitch("Auto Shoot", function(bool)
+   _G.InvadeShoot = bool
    while wait() do
-    if _G.Hammer then
-    Castnumber = not Castnumber + 1
-    BuyProp(Castnumber)
-      else
-    Castnumber = 0
-      break
-     end
+    if _G.InvadeShoot == false then break end
+    game:GetService("ReplicatedStorage").Events.Copy.CopyKick:FireServer("Yellow")
    end
 end)
 
-T3:AddSwitch("Auto Equip All Hammer", function(bool)
-   _G.Hammer_2 = bool
+T3:AddSwitch("Auto Teleport to Invade Mode", function(bool)
+   _G.TpInvade = bool
    while wait() do
-    if _G.Hammer_2 then
-    Castnumber = not Castnumber + 1
-    EquipProp(Castnumber)
-      else
-    Castnumber = 0
-      break
-     end
+    if _G.TpInvade == false then then break end
+    game:GetService("ReplicatedStorage").Events.Copy.CopyTel:FireServer()
    end
 end)
 
