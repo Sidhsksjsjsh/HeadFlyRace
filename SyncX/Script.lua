@@ -81,13 +81,14 @@ DrawType:Add("draw008")
 DrawType:Add("draw009")
 DrawType:Add("draw010")
 DrawType:Add("draw011")
-DrawType:Add("draw012") -- MAX
+DrawType:Add("draw012")
+DrawType:Add("draw013") -- MAX
 
 T2:AddSwitch("Auto Draw", function(bool)
     _G.Egg = bool
     while wait() do
       if _G.Egg == false then break end
-      game:GetService("ReplicatedStorage").Events.Player.Draw.DrawRequest:FireServer(_G.Draw,1)
+      game:GetService("ReplicatedStorage").Events.Player.Draw.DrawRequest:FireServer(_G.Draw,3)
     end
 end)
 
