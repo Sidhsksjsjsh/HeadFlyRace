@@ -51,7 +51,7 @@ end)
 T3:AddSwitch("Auto Teleport to Invade Mode", function(bool)
    _G.TpInvade = bool
    while wait() do
-    if _G.TpInvade == false then then break end
+    if _G.TpInvade == false then break end
     game:GetService("ReplicatedStorage").Events.Copy.CopyTel:FireServer()
    end
 end)
