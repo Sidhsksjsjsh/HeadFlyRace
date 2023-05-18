@@ -25,7 +25,7 @@ function BuyProp(number)
   end
 end
 
-functio EquipProp(number)
+function EquipProp(number)
   if number > 9 then
      game:GetService("ReplicatedStorage").Events.Player.EquipProp:FireServer("hammer0" .. Castnumber)
   end
